@@ -12,6 +12,7 @@ datasource db {
 
 model BookFavorited {
   id            String   @id @default(uuid())
+  bookId        String   @unique
   rating        Int
   title         String
   subtitle      String
