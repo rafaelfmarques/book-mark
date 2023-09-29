@@ -1,10 +1,6 @@
 import { IsArray, IsNotEmpty, IsNumber, IsString } from 'class-validator';
 
 export class CreateBookDto {
-  @IsString()
-  @IsNotEmpty()
-  bookId: string;
-
   @IsNumber()
   @IsNotEmpty()
   rating: number;

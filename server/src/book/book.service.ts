@@ -1,7 +1,6 @@
+import { RepositoriesService } from '@/repositories/repositories.service';
 import { Injectable } from '@nestjs/common';
 import { CreateBookDto } from './dto/create-book.dto';
-import { UpdateBookDto } from './dto/update-book.dto';
-import { RepositoriesService } from '@/repositories/repositories.service';
 
 @Injectable()
 export class BookService {
@@ -11,18 +10,10 @@ export class BookService {
   }
 
   findAll() {
-    return `This action returns all book`;
+    return this.repositories.findAll();
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} book`;
-  }
-
-  update(id: number, updateBookDto: UpdateBookDto) {
-    return `This action updates a #${id} book`;
-  }
-
-  remove(id: number) {
-    return `This action removes a #${id} book`;
+  remove(id: string) {
+    return this.repositories.delete(id);
   }
 }
