@@ -1,4 +1,5 @@
-interface CreateBookFavoritedData {
+export interface CreateBookFavoritedData {
+  id?: string;
   bookId: string;
   rating: number;
   title: string;
@@ -14,4 +15,5 @@ interface CreateBookFavoritedData {
 }
 export interface BookFavoritedInterface {
   create(data: CreateBookFavoritedData): Promise<void>;
+  findAll();
 }
