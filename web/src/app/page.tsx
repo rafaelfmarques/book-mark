@@ -24,10 +24,10 @@ export default function Home() {
           </h3>
         </div>
       </div>
-      <div className="mt-10 justify-center flex ">
+      <div className="mt-16 justify-center flex ">
         <Link
           href={"/search"}
-          className="px-4 py-3 bg-blue-400 hover:bg-blue-300 text-white rounded flex items-center gap-3"
+          className="px-4 py-3 bg-blue-400 hover:bg-blue-300 text-white rounded flex items-center gap-3 max-w-3xl"
         >
           BUSCAR AGORA
         </Link>

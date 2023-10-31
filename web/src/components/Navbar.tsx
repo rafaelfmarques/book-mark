@@ -18,13 +18,13 @@ export default function Navbar({ title, submenus }: NavbarProps) {
         <h1>{title}</h1>
       </a>
       <div className="hidden md:flex gap-5">
-        {submenus.map((submenu, index) => (
+        {submenus.map((item) => (
           <a
-            href={submenu.link}
+            href={item.link}
             className="text-white hover:text-zinc-400"
-            key={`${submenu}-${index}`}
+            key={`${item.submenu}-${item.link}`}
           >
-            {submenu.submenu}
+            {item.submenu}
           </a>
         ))}
       </div>
