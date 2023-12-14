@@ -1,7 +1,6 @@
 "use client";
 import Navbar from "@/components/Navbar";
 import { ChangeEvent, FormEvent, useState } from "react";
-import { AiOutlineSearch } from "react-icons/ai";
 
 export default function Search() {
   const [input, setInput] = useState("");

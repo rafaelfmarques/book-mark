@@ -29,7 +29,7 @@ export default function Home() {
           href={"/search"}
           className="px-4 py-3 bg-blue-400 hover:bg-blue-300 text-white rounded flex items-center gap-3 max-w-3xl"
         >
-          BUSCAR AGORA
+          BUSCAR
         </Link>
       </div>
       <footer></footer>
