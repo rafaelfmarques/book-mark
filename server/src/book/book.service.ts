@@ -1,6 +1,7 @@
 import { RepositoriesService } from '@/repositories/repositories.service';
 import { Injectable } from '@nestjs/common';
 import { CreateBookDto } from './dto/create-book.dto';
+import { FindAllDto } from './dto/find-all.dto';
 
 @Injectable()
 export class BookService {
@@ -9,8 +10,11 @@ export class BookService {
     return this.repositories.create(data);
   }
 
-  findAll() {
-    return this.repositories.findAll();
+  async findAll(query: FindAllDto) {
+    return {
+      books: await this.repositories.findAll(query),
+      total: await this.repositories.countAll(),
+    };
   }
 
   remove(id: string) {
