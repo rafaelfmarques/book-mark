@@ -1,17 +1,36 @@
 "use client";
 import Navbar from "@/components/Navbar";
-import { ChangeEvent, FormEvent, useState } from "react";
+import useDebounce from "@/hooks/useDebounce";
+import axios from "axios";
+import { FormEvent, useEffect, useState } from "react";
 
 export default function Search() {
   const [input, setInput] = useState("");
+  const [data, setData] = useState([]);
+  const inputDebounced = useDebounce(input, 500);
 
-  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
-    setInput(e.target.value);
+  const getBooks = async (input: string) => {
+    try {
+      const { data } = await axios.get(
+        "https://www.googleapis.com/books/v1/volumes",
+        {
+          params: {
+            q: input,
+          },
+        }
+      );
+      console.log(data);
+      setData(data);
+    } catch (error) {}
   };
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
   };
+
+  useEffect(() => {
+    if (inputDebounced) getBooks(inputDebounced);
+  }, [inputDebounced]);
 
   return (
     <div>
@@ -39,16 +58,12 @@ export default function Search() {
           placeholder="Digite o nome do livro, autor, editora..."
           name="campo1"
           value={input}
-          onChange={handleChange}
+          onChange={(e) => setInput(e.target.value)}
         />
-
-        {/* <button type="submit">
-          <AiOutlineSearch />
-        </button> */}
       </form>
 
       <div className=" mt-8 justify-center flex">
-        <span className="dark:text-white">NADA POR AQUI... (CRI) (CRI)</span>
+        <span className="dark:text-white">{data.length && <div></div>}</span>
       </div>
     </div>
   );
