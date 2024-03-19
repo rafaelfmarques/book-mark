@@ -1,16 +1,12 @@
 "use client";
 
-import { useEffect, useState } from "react";
-import { FaMoon } from "react-icons/fa";
+import { useTheme } from "@/contexts/ThemeContext";
+import { useEffect } from "react";
 import { BsSunFill } from "react-icons/bs";
+import { FaMoon } from "react-icons/fa";
 
 const Toggle = () => {
-  const [darkMode, setDarkMode] = useState(false);
-
-  useEffect(() => {
-    const theme = localStorage.getItem("theme");
-    setDarkMode(theme === "dark");
-  }, []);
+  const { darkMode, toggleTheme } = useTheme();
 
   useEffect(() => {
     if (darkMode) {
@@ -25,7 +21,7 @@ const Toggle = () => {
   return (
     <div
       className="relative w-16 h-8 flex items-center dark:bg-gray-900 bg-teal-50 cursor-pointer rounded-full p-1"
-      onClick={() => setDarkMode(!darkMode)}
+      onClick={toggleTheme}
     >
       <BsSunFill className=" text-yellow-400" size={18} />
       <div

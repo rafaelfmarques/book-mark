@@ -1,3 +1,4 @@
+import Link from "next/link";
 import Toggle from "./Toggle";
 
 type NavbarProps = {
@@ -13,25 +14,27 @@ type SubmenuProps = {
 export default function Navbar({ title, submenus }: NavbarProps) {
   return (
     <div className="dark:bg-dark">
-      <nav className="p-6 flex justify-around">
-        <a
+      <nav className="p-6 flex justify-around ">
+        <Link
           href="/"
           className="text-2xl hover:text-blue-200 text-blue-400 font-bold"
         >
           <h1>{title}</h1>
-        </a>
-        {/* <div className="hidden md:flex gap-5">
+        </Link>
+        <div className="ml-5 flex  gap-5">
           {submenus.map((item) => (
-            <a
+            <Link
               href={item.link}
-              className="text-black hover:text-zinc-400"
+              className="text-blue-300 self-center hover:text-zinc-400"
               key={`${item.submenu}-${item.link}`}
             >
               {item.submenu}
-            </a>
+            </Link>
           ))}
-        </div> */}
-        <div className="flex flex-1 justify-end">{<Toggle />}</div>
+        </div>
+        <div className="flex flex-1 justify-end">
+          <Toggle />
+        </div>
       </nav>
     </div>
   );
