@@ -19,8 +19,8 @@ export default function Search() {
           },
         }
       );
-      console.log(data);
-      setData(data);
+      const result = data.items.map((book) => book.volumeInfo);
+      setData(result);
     } catch (error) {}
   };
 
@@ -30,6 +30,7 @@ export default function Search() {
 
   useEffect(() => {
     if (inputDebounced) getBooks(inputDebounced);
+    else setData([]);
   }, [inputDebounced]);
 
   return (
@@ -62,8 +63,18 @@ export default function Search() {
         />
       </form>
 
-      <div className=" mt-8 justify-center flex">
-        <span className="dark:text-white">{data.length && <div></div>}</span>
+      <div className="dark:text-white">
+        {data.length > 0 &&
+          data.map((it) => (
+            <>
+              <img src={it?.imageLinks?.thumbnail}></img>
+              <div>{it.title}</div>
+              <div>{it.authors}</div>
+              <div>{it.publisher}</div>
+              <div>{it.publishedDate}</div>
+              <div>{it.averageRating}</div>
+            </>
+          ))}
       </div>
     </div>
   );
