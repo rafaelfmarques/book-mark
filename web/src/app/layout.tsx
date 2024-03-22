@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/contexts/ThemeContext";
+import Navbar from "@/components/Navbar";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -17,7 +18,19 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${inter.className} dark:bg-medium`}>
-        <ThemeProvider>{children}</ThemeProvider>
+        <ThemeProvider>
+          <>
+            <Navbar
+              title="BOOKMARK"
+              submenus={[
+                { submenu: "FAVORITOS", link: "/" },
+                { submenu: "SOBRE", link: "/" },
+                { submenu: "CONTATO", link: "/" },
+              ]}
+            />
+            {children}
+          </>
+        </ThemeProvider>
       </body>
     </html>
   );
