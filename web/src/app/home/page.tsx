@@ -7,17 +7,10 @@ import { AiOutlineHeart } from "react-icons/ai";
 export default function Home() {
   return (
     <div>
-      <Navbar
-        title="BOOKMARK"
-        submenus={[
-          { submenu: "SOBRE", link: "/" },
-          { submenu: "CONTATO", link: "/" },
-        ]}
-      />
       <div className="mt-16 justify-center flex">
         <div className="max-w-md p-4 flex items-center">
           <h3 className="text-xl md:text-2xl lg:text-3xl font-extrabold dark:text-white">
-            Encontre os livros que você mais {""}
+            Encontre os livros que você mais
             <span className="text-red-600 hover:text-red-300">ama</span>, e
             salve-os para nunca mais perdê-los!
             <AiOutlineHeart className="ml-2 inline " />
