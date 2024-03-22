@@ -1,13 +1,17 @@
 import { StarProps } from "@/interfaces/Star.interface";
+import { useEffect } from "react";
 
-export default function Star({ active, size = 25 }: StarProps) {
+export default function Star({ active, isHovered, size = 25 }: StarProps) {
+  // useEffect(() => ,[isHovered])
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
-      className={active ? "text-yellow-500" : "text-gray-300"}
+      className={`transition-colors duration-300 ${
+        active || isHovered ? "text-yellow-500" : "text-gray-300"
+      }`}
       width={size}
       viewBox="0 0 20 20"
-      fill="currentColor"
+      fill={"currentColor"}
     >
       <path
         fillRule="evenodd"
