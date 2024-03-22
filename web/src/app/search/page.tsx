@@ -1,6 +1,8 @@
 "use client";
+import BookList from "@/components/BookList";
 import Navbar from "@/components/Navbar";
 import useDebounce from "@/hooks/useDebounce";
+import { BookDataProps } from "@/interfaces/BookData.interface";
 import axios from "axios";
 import { FormEvent, useEffect, useState } from "react";
 
@@ -19,7 +21,7 @@ export default function Search() {
           },
         }
       );
-      const result = data.items.map((book) => book.volumeInfo);
+      const result = data.items.map((book: BookDataProps) => book.volumeInfo);
       setData(result);
     } catch (error) {}
   };
@@ -63,19 +65,7 @@ export default function Search() {
         />
       </form>
 
-      <div className="dark:text-white">
-        {data.length > 0 &&
-          data.map((it) => (
-            <>
-              <img src={it?.imageLinks?.thumbnail}></img>
-              <div>{it.title}</div>
-              <div>{it.authors}</div>
-              <div>{it.publisher}</div>
-              <div>{it.publishedDate}</div>
-              <div>{it.averageRating}</div>
-            </>
-          ))}
-      </div>
+      <BookList data={data} />
     </div>
   );
 }
