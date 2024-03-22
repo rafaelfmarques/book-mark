@@ -4,6 +4,7 @@ export type BookListProps = {
 
 type DataProps = {
   title: string;
+  authors: string[];
   averageRating: number;
   publisher: string;
   publishedDate: string;

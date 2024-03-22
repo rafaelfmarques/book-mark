@@ -14,7 +14,7 @@ type SubmenuProps = {
 export default function Navbar({ title, submenus }: NavbarProps) {
   return (
     <div className="dark:bg-dark">
-      <nav className="p-6 flex justify-around ">
+      <nav className="p-6 flex justify-around">
         <Link
           href="/"
           className="text-2xl hover:text-blue-200 text-blue-400 font-bold"
