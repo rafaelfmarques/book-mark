@@ -2,6 +2,7 @@ import { FindAllDto } from '@/book/dto/find-all.dto';
 
 export interface CreateBookFavoritedData {
   id?: string;
+  bookId: string;
   rating: number;
   title: string;
   subtitle: string;
@@ -10,7 +11,6 @@ export interface CreateBookFavoritedData {
   publisher: string;
   smallThumb: string;
   thumb: string;
-  lang: string;
   categories: string[];
   authors: string[];
 }
