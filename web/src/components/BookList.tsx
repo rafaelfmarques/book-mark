@@ -7,6 +7,7 @@ import { useState } from "react";
 
 export default function BookList({ data }: BookListProps) {
   const [isHovered, setIsHovered] = useState<number | null>(null);
+
   return (
     <div className="m-10 sm:mb-10 dark:text-white grid lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 gap-4 justify-center items-center">
       {data.length > 0 &&
@@ -17,7 +18,7 @@ export default function BookList({ data }: BookListProps) {
               <div className="font-bold text-xl mb-2 dark:text-white flex justify-between">
                 {it.title}
                 <button
-                  className="hover:text-yellow-40"
+                  className="transition-colors duration-300 hover:text-yellow-40"
                   onMouseEnter={() => setIsHovered(index)}
                   onMouseLeave={() => setIsHovered(null)}
                   onClick={() => null}

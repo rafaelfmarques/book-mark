@@ -1,8 +1,6 @@
 import { StarProps } from "@/interfaces/Star.interface";
-import { useEffect } from "react";
 
 export default function Star({ active, isHovered, size = 25 }: StarProps) {
-  // useEffect(() => ,[isHovered])
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
