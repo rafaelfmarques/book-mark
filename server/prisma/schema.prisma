@@ -15,12 +15,10 @@ model BookFavorited {
   rating        Int
   bookId        String
   title         String
-  subtitle      String
   description   String
   publishedDate String
   publisher     String
   smallThumb    String
   thumb         String
-  categories    String[]
   authors       String[]
 }
