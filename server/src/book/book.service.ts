@@ -17,6 +17,10 @@ export class BookService {
     };
   }
 
+  async findBooksWithoutFilter() {
+    return this.repositories.findWithoutFilters();
+  }
+
   remove(id: string) {
     return this.repositories.delete(id);
   }

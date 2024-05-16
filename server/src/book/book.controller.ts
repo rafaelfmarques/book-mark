@@ -20,10 +20,18 @@ export class BookController {
 
   @Get()
   @ApiOperation({
-    summary: 'Busca todos os livros favoritados pelo usuário',
+    summary: 'Busca os livros favoritados pelo usuário para uma lista paginada',
   })
   findAll(@Query() query: FindAllDto) {
     return this.bookService.findAll(query);
+  }
+
+  @Get('without-filter')
+  @ApiOperation({
+    summary: 'Busca os livros favoritados pelo usuário sem paginação',
+  })
+  findBooksWithoutFilter() {
+    return this.bookService.findBooksWithoutFilter();
   }
 
   @Delete(':id')

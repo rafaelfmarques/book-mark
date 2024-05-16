@@ -19,6 +19,10 @@ export class RepositoriesService implements BookFavoritedInterface {
     return await this.prisma.bookFavorited.findMany({ skip: skip, take: take });
   }
 
+  async findWithoutFilters() {
+    return await this.prisma.bookFavorited.findMany();
+  }
+
   async countAll() {
     return await this.prisma.bookFavorited.count();
   }
