@@ -10,6 +10,7 @@ export class ConfigurationService {
       .setDescription(SWAGGER_CONFIG.description)
       .setVersion(SWAGGER_CONFIG.version)
       .addTag('Book')
+      .addTag('User')
       .build();
 
     const document = SwaggerModule.createDocument(app, builder);
