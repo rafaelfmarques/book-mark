@@ -1,13 +1,17 @@
 import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
 import { UserRepository } from '../repositories/userRepository.service';
 import { CreateUserDto } from './dto/create-user.dto';
+import { BookRepository } from '../repositories/bookRepository.service';
 
 @Injectable()
 export class UserService {
-  constructor(private readonly userRepository: UserRepository) {}
+  constructor(
+    private readonly userRepository: UserRepository,
+    private readonly bookRepository: BookRepository,
+  ) {}
 
   async create(createUserDto: CreateUserDto) {
-    const userAlreadyExists = await this.userRepository.findExistingUser(createUserDto.email);
+    const userAlreadyExists = await this.userRepository.findByEmail(createUserDto.email);
 
     if (userAlreadyExists)
       throw new HttpException('User already exists', HttpStatus.INTERNAL_SERVER_ERROR);
@@ -15,11 +19,12 @@ export class UserService {
     return await this.userRepository.create(createUserDto);
   }
 
-  findOne(id: string) {
-    return this.userRepository.findOne(id);
+  async findOne(id: string) {
+    return await this.userRepository.findOne(id);
   }
 
-  remove(id: number) {
-    // const booksFavotied = await
+  async remove(id: string) {
+    const user = await this.userRepository.findOne(id);
+    if (user) return await this.userRepository.delete(id);
   }
 }
