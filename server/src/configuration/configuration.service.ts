@@ -6,9 +6,11 @@ import { SWAGGER_CONFIG } from './interfaces/swagger.config';
 export class ConfigurationService {
   createDocument(app: INestApplication) {
     const builder = new DocumentBuilder()
+      .addBearerAuth({ type: 'http', scheme: 'bearer', bearerFormat: 'JWT' }, 'access-token')
       .setTitle(SWAGGER_CONFIG.title)
       .setDescription(SWAGGER_CONFIG.description)
       .setVersion(SWAGGER_CONFIG.version)
+      .addTag('Auth')
       .addTag('Book')
       .addTag('User')
       .build();
