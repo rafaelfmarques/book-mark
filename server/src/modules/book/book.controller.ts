@@ -2,10 +2,11 @@ import { Body, Controller, Delete, Get, Param, Post, Query } from '@nestjs/commo
 import { BookService } from './book.service';
 import { CreateBookDto } from './dto/create-book.dto';
 import { FindAllDto } from './dto/find-all.dto';
-import { ApiBody, ApiOperation, ApiTags } from '@nestjs/swagger';
+import { ApiBearerAuth, ApiBody, ApiOperation, ApiTags } from '@nestjs/swagger';
 
 @Controller('book')
 @ApiTags('Book')
+@ApiBearerAuth('access-token')
 export class BookController {
   constructor(private readonly bookService: BookService) {}
 
